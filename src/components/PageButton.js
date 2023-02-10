@@ -1,16 +1,16 @@
 import './styles/pageButton.css'
 
-const PageButton = ({onClick, isLoading}) => {
+const PageButton = ({onClick, disabled}) => {
 
   
     
     return (
-      <button 
+        <button 
         onClick={onClick}
-        disabled={isLoading}
+        disabled={disabled}
         className="pageButton"
         > Icon </button>
     );
-  }
-  
-  export default PageButton;
+}
+
+export default PageButton;

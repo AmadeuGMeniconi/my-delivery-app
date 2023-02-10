@@ -2,10 +2,10 @@ import './styles/tablePage.css'
 
 const TablePage = () => {
     return (
-      <div className='tablePageContainer'>
+        <div className='tablePageContainer'>
         <h1>TablePage</h1>
-      </div>
+        </div>
     );
-  }
+}
   
-  export default TablePage;
+export default TablePage;

@@ -18,7 +18,7 @@ function App() {
 
   function goToPage(page) {
     switch(page) {
-      case 'REGISTER': setCurrentPage(<RegisterPage/>)
+      case 'REGISTER': setCurrentPage(<RegisterPage />)
       break;
       case 'TABLE': setCurrentPage(<TablePage/>)
       break;
@@ -33,8 +33,8 @@ function App() {
           <h1>TITLE</h1>
       </header>
       <nav className='navBar'>
-        <PageButton onClick={() => goToPage('REGISTER')} isLoading={isLoading} />
-        <PageButton onClick={() => goToPage('TABLE')} isLoading={isLoading}/>
+        <PageButton onClick={() => goToPage('REGISTER')} disabled={isLoading} />
+        <PageButton onClick={() => goToPage('TABLE')} disabled={isLoading}/>
         {/* <PageButton onClick={() => goToPage('MAP')} isLoading={isLoading}/> */}
       </nav>
       <div className='pageContainer'>

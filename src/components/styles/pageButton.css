@@ -1,0 +1,9 @@
+.pageButton {
+    padding: 1rem;
+    margin: 1em;
+    width: 4.5em;
+    height: 4.5em;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(107, 255, 198);
+}

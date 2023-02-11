@@ -11,7 +11,14 @@ table {
     width: 50%;
     min-width: 400px;
 }
-
+thead {
+    background-color: #6bffc6;
+}
+table, td {
+    border: 2px solid rgb(197, 197, 197);
+    border-collapse: collapse;
+    padding: 0.2em;
+}
 td {
     text-align: center;
 }

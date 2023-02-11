@@ -64,12 +64,12 @@ const RegisterPage = ({setIsNavDisabled}) => {
             setIsNavDisabled(true)
             try {
                 setTimeout(() => {
-                    //TODO: GoogleMaps validade From and To eher or directly on input before sending object to database
+                    //TODO: GoogleMaps validade From and To here, on input or on backend before sending data to database throgh this try catch
                     showToast('DELIVERY_REGISTERED')
                     // clearFormData()
                     setIsLoading(false)
                     setIsNavDisabled(false)
-                }, 6000);
+                }, 2000);
             } catch (error) {
                 showToast('DELIVERY_REGISTER_FAILED')
                 setIsLoading(false)

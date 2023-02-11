@@ -8,11 +8,14 @@
 
 table {
     margin-top: 5em;
-    width: 50%;
-    min-width: 400px;
+    width: 80%;
+    min-width: 600px;
 }
-thead {
+th {
     background-color: #6bffc6;
+    font-size: 1em;
+    font-weight: 700;
+    padding: 0.5em;
 }
 table, td {
     border: 2px solid rgb(197, 197, 197);
@@ -22,7 +25,9 @@ table, td {
 td {
     text-align: center;
 }
-
+td.trackDelivery {
+    padding: 0.2em 0.4em 0 0.4em ;
+}
 td.trackDelivery:hover {
     background-color: rgb(214, 214, 214);
     cursor: pointer;

@@ -16,12 +16,12 @@ const TablePage = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Client Name</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Date</th>
-                        <th>Track</th>
+                        <th>ID</th>
+                        <th>CLIENT NAME</th>
+                        <th>FROM</th>
+                        <th>TO</th>
+                        <th>DATE</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody >
@@ -33,7 +33,7 @@ const TablePage = () => {
                             <td>{delivery.from}</td>
                             <td>{delivery.to}</td>
                             <td>{delivery.date}</td>
-                            <td className='trackDelivery'><MapPinIcon width={25} fill={'red'}/></td>
+                            <td className='trackDelivery'><MapPinIcon height={25} fill={'red'}/></td>
                         </tr>
                         );
                     })}

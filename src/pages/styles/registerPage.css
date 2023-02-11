@@ -49,6 +49,7 @@ form > label > .date {
     background-color: rgb(107, 255, 198);
     color: white;
     box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.103);
+    cursor: pointer;
 }
 
 /* .loading {

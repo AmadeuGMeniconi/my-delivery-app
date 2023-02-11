@@ -3,7 +3,11 @@ import './styles/tablePage.css'
 
 const TablePage = () => {
 
-    const [deliveryList, setDeliveryList] = useState([])
+    const [deliveryList, setDeliveryList] = useState([
+        {id: 1, clientName: 'alberto', from: 'Rua A', to: 'Rua B', date: '21-05-2023'},
+        {id: 2, clientName: 'maria', from: 'Rua C', to: 'Avenida A', date: '23-08-2023'},
+        {id: 3, clientName: 'joao', from: 'Avenida F', to: 'Rua B', date: '01-01-2023'}
+    ]);
 
     return (
         <div className='tablePageContainer'>
@@ -15,17 +19,19 @@ const TablePage = () => {
                         <th>From</th>
                         <th>To</th>
                         <th>Date</th>
+                        <th>Track</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     {deliveryList.map((delivery, index) => {
                         return (
-                        <tr key={delivery.id} onClick={() => console.log('Idx: ' + index, 'Id: ' + delivery.id)}>
+                        <tr key={delivery.id} onClick={() => console.log('Idx: ' + index, ' | ', 'Id: ' + delivery.id)}>
                             <td>{delivery.id}</td>
                             <td>{delivery.clientName}</td>
                             <td>{delivery.from}</td>
                             <td>{delivery.to}</td>
                             <td>{delivery.date}</td>
+                            <td className='trackDelivery'>MAP</td>
                         </tr>
                         );
                     })}

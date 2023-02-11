@@ -7,7 +7,7 @@ const PageButton = ({onClick, disabled}) => {
         onClick={onClick}
         disabled={disabled}
         className="pageButton"
-        > Icon </button>
+        > </button>
     );
 }
 

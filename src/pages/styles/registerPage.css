@@ -12,7 +12,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5em;
+    margin: 4em;
+    min-width: 20em;
+}
+.title > h1 {
+    font-size: 5em;
 }
 
 form {
@@ -56,4 +60,8 @@ form > label > .date {
 }
 .submitButton:active {
     background-color: #59daa8;
+}
+.submitButton:disabled {
+    background-color: #c8ffea;
+    cursor: default;
 }

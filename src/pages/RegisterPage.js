@@ -22,6 +22,7 @@ const RegisterPage = ({setIsNavDisabled}) => {
         setIsFilled(checkIsDeliveryDataComplete());
         console.log('isLoading? ', isLoading)
         console.log('isFilled? ', isFilled)
+        console.log('-------------------------')
     } )
 
     function clearFormData() {
@@ -65,7 +66,7 @@ const RegisterPage = ({setIsNavDisabled}) => {
                 setTimeout(() => {
                     //TODO: GoogleMaps validade From and To eher or directly on input before sending object to database
                     showToast('DELIVERY_REGISTERED')
-                    clearFormData()
+                    // clearFormData()
                     setIsLoading(false)
                     setIsNavDisabled(false)
                 }, 6000);

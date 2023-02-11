@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: rgb(34, 34, 34);
 }
 
 .appContainer {
@@ -33,7 +34,7 @@
   justify-content: start;
   align-items: center;
   padding-top: 1rem;
-  background-color: rgba(230, 230, 230, 0.295);
+
 }
 
 .pageContainer {

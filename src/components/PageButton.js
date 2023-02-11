@@ -1,13 +1,13 @@
 import './styles/pageButton.css'
 
-const PageButton = ({onClick, disabled}) => {
+const PageButton = ({icon, onClick, disabled}) => {
 
     return (
         <button 
         onClick={onClick}
         disabled={disabled}
         className="pageButton"
-        > </button>
+        >{icon}</button>
     );
 }
 

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './styles/tablePage.css'
 
+import { MapPinIcon } from '@heroicons/react/24/solid'
+
 const TablePage = () => {
 
     const [deliveryList, setDeliveryList] = useState([
@@ -31,7 +33,7 @@ const TablePage = () => {
                             <td>{delivery.from}</td>
                             <td>{delivery.to}</td>
                             <td>{delivery.date}</td>
-                            <td className='trackDelivery'>MAP</td>
+                            <td className='trackDelivery'><MapPinIcon width={25} fill={'red'}/></td>
                         </tr>
                         );
                     })}

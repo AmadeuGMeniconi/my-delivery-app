@@ -12,6 +12,9 @@ import TablePage from './pages/TablePage';
 //Styles
 import './App.css';
 
+import { ClipboardDocumentListIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
+import deliveryListIcon from './images/delivery-list.svg'
+
 function App() {
 
   const [currentPage, setCurrentPage] = useState(<RegisterPage/>)
@@ -36,8 +39,8 @@ function App() {
             <h1>TITLE</h1>
         </header>
         <nav className='navBar'>
-          <PageButton onClick={() => goToPage('REGISTER')} disabled={isNavDisabled} />
-          <PageButton onClick={() => goToPage('TABLE')} disabled={isNavDisabled}/>
+          <PageButton onClick={() => goToPage('REGISTER')} disabled={isNavDisabled} icon={<ArchiveBoxArrowDownIcon stroke='white'/>} />
+          <PageButton onClick={() => goToPage('TABLE')} disabled={isNavDisabled} icon={<ClipboardDocumentListIcon stroke='white'/>}/>
           {/* <PageButton onClick={() => goToPage('MAP')} isLoading={isLoading}/> */}
         </nav>
         <div className='pageContainer'>

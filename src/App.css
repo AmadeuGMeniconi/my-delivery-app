@@ -22,10 +22,17 @@
   align-items: center;
   box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.055);
 }
-.appHeader > h1 {
-  padding-left: 2rem;
+.appHeader > span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 1.5rem;
 }
-
+.appHeader > span > h1 {
+  padding-left: 0.7em;
+  font-size: 1.6em;
+  cursor: default;
+}
 .navBar {
   min-width: 5rem;
   grid-row: 2 / -1;

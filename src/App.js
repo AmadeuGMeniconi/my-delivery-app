@@ -12,7 +12,7 @@ import TablePage from './pages/TablePage';
 //Styles
 import './App.css';
 
-import { ClipboardDocumentListIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
+import { ClipboardDocumentListIcon, ArchiveBoxArrowDownIcon, CubeIcon } from '@heroicons/react/24/outline'
 import deliveryListIcon from './images/delivery-list.svg'
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
       <ToastContainer/>
       <div className="appContainer">
         <header className='appHeader'>
-            <h1>TITLE</h1>
+          <span><CubeIcon stroke={'#6bffc6'} width={80}/><h1>DELIVERY<br/>APP</h1></span>
         </header>
         <nav className='navBar'>
           <PageButton onClick={() => goToPage('REGISTER')} disabled={isNavDisabled} icon={<ArchiveBoxArrowDownIcon stroke='white'/>} />

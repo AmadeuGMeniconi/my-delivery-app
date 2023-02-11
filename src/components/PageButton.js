@@ -2,8 +2,6 @@ import './styles/pageButton.css'
 
 const PageButton = ({onClick, disabled}) => {
 
-  
-    
     return (
         <button 
         onClick={onClick}

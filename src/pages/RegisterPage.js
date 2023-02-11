@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './styles/registerPage.css'
 
-const RegisterPage = () => {
+const RegisterPage = ({setIsNavDisabled}) => {
 
     const [clientName, setClientName] = useState('')
     const [from, setFrom] = useState('')
@@ -13,6 +13,12 @@ const RegisterPage = () => {
 
     const [isLoading, setIsLoading] = useState(false)
     const [isFilled, setIsFilled] = useState(false)
+
+    console.log(isLoading)
+
+    useEffect(() => {
+        setIsFilled(checkIsDeliveryDataComplete());
+    } )
 
     function clearFormData() {
         setClientName('')
@@ -27,12 +33,7 @@ const RegisterPage = () => {
         } else {
             return false
         }
-    }
-
-    useEffect(() => {
-        setIsFilled(checkIsDeliveryDataComplete());
-        console.log(clientName, from, to, date)
-    } )
+    }    
 
     function showToast(status) {
         switch(status){
@@ -50,16 +51,19 @@ const RegisterPage = () => {
 
     function handleFormSubmition(isFilled) {
         setIsLoading(true)
+        setIsNavDisabled(true)
         if (isFilled) {
             setTimeout(() => {
                 //TODO: Check From and To Adress before sending data to database
                 showToast('success')
-                clearFormData()
+                // clearFormData()
                 setIsLoading(false)
-            }, 1000);
+                setIsNavDisabled(false)
+            }, 3000);
         } else {
             showToast('warning')
             setIsLoading(false)
+            setIsNavDisabled(false)
         }
     }
 
@@ -67,7 +71,7 @@ const RegisterPage = () => {
         <div className='registerPageContainer'>
             <div className='title'>
                 <h1>Welcome</h1>
-                <h2>Fill the form bellow to register the delivery</h2>
+                <p>Fill the form bellow to register the delivery</p>
             </div>
             <form>
                 <label>
@@ -106,6 +110,7 @@ const RegisterPage = () => {
                 <label>
                     Date:
                     <input 
+                    className='date'
                         type='date' 
                         value={date} 
                         name='date' 
@@ -115,10 +120,9 @@ const RegisterPage = () => {
                     />
                 </label>
 
-                {
-                isLoading ? 
-                    <h1>Loading...</h1> 
-                    :
+                
+                {isLoading && <p className='loading'>Loading...</p>}
+                    
                     <input 
                         className='submitButton'
                         type='submit' 
@@ -126,7 +130,7 @@ const RegisterPage = () => {
                         onClick={() => handleFormSubmition(isFilled)}  
                         disabled={isLoading}
                     />
-                }
+                
             </form>
         </div>
     );

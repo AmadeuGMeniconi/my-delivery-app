@@ -5,7 +5,7 @@
 }
 
 .appContainer {
-  min-height: 50rem;
+  /* min-height: 50rem; */
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 15fr;
@@ -37,8 +37,8 @@
 }
 
 .pageContainer {
-  display: flex;
+  /* display: flex; */
   grid-row: 2 / -1;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
 }

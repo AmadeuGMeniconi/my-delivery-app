@@ -15,11 +15,11 @@ import TablePage from './pages/TablePage';
 function App() {
 
   const [currentPage, setCurrentPage] = useState(<RegisterPage/>)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isNavDisabled, setIsNavDisabled] = useState(false)
 
   function goToPage(page) {
     switch(page) {
-      case 'REGISTER': setCurrentPage(<RegisterPage />)
+      case 'REGISTER': setCurrentPage(<RegisterPage setIsNavDisabled={setIsNavDisabled}/>)
       break;
       case 'TABLE': setCurrentPage(<TablePage/>)
       break;
@@ -37,8 +37,8 @@ function App() {
             <h1>TITLE</h1>
         </header>
         <nav className='navBar'>
-          <PageButton onClick={() => goToPage('REGISTER')} disabled={isLoading} />
-          <PageButton onClick={() => goToPage('TABLE')} disabled={isLoading}/>
+          <PageButton onClick={() => goToPage('REGISTER')} disabled={isNavDisabled} />
+          <PageButton onClick={() => goToPage('TABLE')} disabled={isNavDisabled}/>
           {/* <PageButton onClick={() => goToPage('MAP')} isLoading={isLoading}/> */}
         </nav>
         <div className='pageContainer'>

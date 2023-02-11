@@ -1,5 +1,7 @@
 .registerPageContainer{
+
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -7,6 +9,7 @@
 
 .title {
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -15,18 +18,41 @@
 
 form {
     display: flex;
+    flex: 3;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 0;
 }
 form > label {
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: start;
     margin: 0.2em;
 }
+form > label > input {
+    width: 20em;
+    height: 2.5em;
+    padding: 0.2em;
+}
+form > label > .date {
+    width: 10.5em;
+    height: 3.5em;
+}
 
 .submitButton {
-    margin: 2em;
+    margin-top: 50%;
+    padding: 1em 3.3em;
+    border: none;
+    border-radius: 0.2em;
+    background-color: rgb(107, 255, 198);
+    color: white;
+    box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.103);
+}
+
+.loading {
+    position: fixed;
+    margin: auto;
 }

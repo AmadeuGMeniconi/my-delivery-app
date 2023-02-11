@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-//Styles
-import './App.css';
-
 //App components
 import PageButton from './components/PageButton';
 
@@ -11,6 +8,9 @@ import PageButton from './components/PageButton';
 import MapPage from './pages/MapPage';
 import RegisterPage from './pages/RegisterPage';
 import TablePage from './pages/TablePage';
+
+//Styles
+import './App.css';
 
 function App() {
 
@@ -29,10 +29,9 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <ToastContainer/>
       <div className="appContainer">
-        
         <header className='appHeader'>
             <h1>TITLE</h1>
         </header>
@@ -45,7 +44,7 @@ function App() {
           {currentPage}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

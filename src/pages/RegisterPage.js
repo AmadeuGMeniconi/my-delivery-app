@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+//App components
+import Throbber from '../components/Throbber';
+
+//Styles
 import './styles/registerPage.css'
 
 const RegisterPage = ({setIsNavDisabled}) => {
@@ -14,10 +18,10 @@ const RegisterPage = ({setIsNavDisabled}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isFilled, setIsFilled] = useState(false)
 
-    console.log(isLoading)
-
     useEffect(() => {
         setIsFilled(checkIsDeliveryDataComplete());
+        console.log('isLoading? ', isLoading)
+        console.log('isFilled? ', isFilled)
     } )
 
     function clearFormData() {
@@ -37,34 +41,41 @@ const RegisterPage = ({setIsNavDisabled}) => {
 
     function showToast(status) {
         switch(status){
-            case 'success':
+            case 'DELIVERY_REGISTERED':
                 toast.success('Delivery Registered!', {
                     position: toast.POSITION.BOTTOM_LEFT,
                 });
                 break;
-            case 'warning':
+            case 'DELIVERY_REGISTER_FAILED':
+                toast.warning('Oops. Something happened... Delivery Registration Refused.', {
+                    position: toast.POSITION.BOTTOM_LEFT,
+                });
+            case 'EMPTY_FIELDS':
                 toast.warning('Check for empty fields.', {
                     position: toast.POSITION.BOTTOM_LEFT,
                 });
         }
     }
 
-    function handleFormSubmition(isFilled) {
-        setIsLoading(true)
-        setIsNavDisabled(true)
+    function formSubmition(isFilled) {
         if (isFilled) {
-            setTimeout(() => {
-                //TODO: Check From and To Adress before...
-                //sending object to database
-                showToast('success')
-                // clearFormData()
+            setIsLoading(true)
+            setIsNavDisabled(true)
+            try {
+                setTimeout(() => {
+                    //TODO: GoogleMaps validade From and To eher or directly on input before sending object to database
+                    showToast('DELIVERY_REGISTERED')
+                    // clearFormData()
+                    setIsLoading(false)
+                    setIsNavDisabled(false)
+                }, 6000);
+            } catch (error) {
+                showToast('DELIVERY_REGISTER_FAILED')
                 setIsLoading(false)
                 setIsNavDisabled(false)
-            }, 3000);
+            }
         } else {
-            showToast('warning')
-            setIsLoading(false)
-            setIsNavDisabled(false)
+            showToast('EMPTY_FIELDS')
         }
     }
 
@@ -120,18 +131,16 @@ const RegisterPage = ({setIsNavDisabled}) => {
                         disabled={isLoading}
                     />
                 </label>
-
                 
-                {isLoading && <p className='loading'>Loading...</p>}
+                {isLoading && <Throbber/>}
                     
-                    <input 
-                        className='submitButton'
-                        type='submit' 
-                        value='Register'
-                        onClick={() => handleFormSubmition(isFilled)}  
-                        disabled={isLoading}
-                    />
-                
+                <input 
+                    className='submitButton'
+                    type='submit' 
+                    value='Register'
+                    onClick={() => formSubmition(isFilled)}  
+                    disabled={isLoading}
+                />
             </form>
         </div>
     );

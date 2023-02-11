@@ -13,20 +13,20 @@ import TablePage from './pages/TablePage';
 import './App.css';
 
 import { ClipboardDocumentListIcon, ArchiveBoxArrowDownIcon, CubeIcon } from '@heroicons/react/24/outline'
-import deliveryListIcon from './images/delivery-list.svg'
+
 
 function App() {
 
-  const [currentPage, setCurrentPage] = useState(<RegisterPage/>)
   const [isNavDisabled, setIsNavDisabled] = useState(false)
+  const [currentPage, setCurrentPage] = useState(<RegisterPage setIsNavDisabled={setIsNavDisabled}/>)
 
   function goToPage(page) {
     switch(page) {
       case 'REGISTER': setCurrentPage(<RegisterPage setIsNavDisabled={setIsNavDisabled}/>)
       break;
-      case 'TABLE': setCurrentPage(<TablePage/>)
+      case 'TABLE': setCurrentPage(<TablePage setIsNavDisabled={setIsNavDisabled}/>)
       break;
-      case 'MAP': setCurrentPage(<MapPage/>)
+      case 'MAP': setCurrentPage(<MapPage setIsNavDisabled={setIsNavDisabled}/>)
       break;
     }
   }

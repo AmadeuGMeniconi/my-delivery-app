@@ -54,7 +54,8 @@ const RegisterPage = ({setIsNavDisabled}) => {
         setIsNavDisabled(true)
         if (isFilled) {
             setTimeout(() => {
-                //TODO: Check From and To Adress before sending data to database
+                //TODO: Check From and To Adress before...
+                //sending object to database
                 showToast('success')
                 // clearFormData()
                 setIsLoading(false)

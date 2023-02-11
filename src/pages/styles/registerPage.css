@@ -51,9 +51,9 @@ form > label > .date {
     box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.103);
     cursor: pointer;
 }
-
-/* .loading {
-    font-size: 100px;
-    position: fixed;
-    margin: auto;
-} */
+.submitButton:hover {
+    background-color: #97ffd7;
+}
+.submitButton:active {
+    background-color: #59daa8;
+}

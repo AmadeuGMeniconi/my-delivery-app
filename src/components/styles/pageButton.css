@@ -8,3 +8,9 @@
     background-color: #6bffc6;
     cursor: pointer;
 }
+.pageButton:hover {
+    background-color: #97ffd7;
+}
+.pageButton:active {
+    background-color: #59daa8;
+}

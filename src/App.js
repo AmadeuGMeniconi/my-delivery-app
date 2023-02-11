@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 //Styles
 import './App.css';
@@ -28,17 +29,21 @@ function App() {
   }
 
   return (
-    <div className="appContainer">
-      <header className='appHeader'>
-          <h1>TITLE</h1>
-      </header>
-      <nav className='navBar'>
-        <PageButton onClick={() => goToPage('REGISTER')} disabled={isLoading} />
-        <PageButton onClick={() => goToPage('TABLE')} disabled={isLoading}/>
-        {/* <PageButton onClick={() => goToPage('MAP')} isLoading={isLoading}/> */}
-      </nav>
-      <div className='pageContainer'>
-        {currentPage}
+    <div>
+      <ToastContainer/>
+      <div className="appContainer">
+        
+        <header className='appHeader'>
+            <h1>TITLE</h1>
+        </header>
+        <nav className='navBar'>
+          <PageButton onClick={() => goToPage('REGISTER')} disabled={isLoading} />
+          <PageButton onClick={() => goToPage('TABLE')} disabled={isLoading}/>
+          {/* <PageButton onClick={() => goToPage('MAP')} isLoading={isLoading}/> */}
+        </nav>
+        <div className='pageContainer'>
+          {currentPage}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './styles/registerPage.css'
 
 const RegisterPage = () => {
@@ -31,17 +34,31 @@ const RegisterPage = () => {
         console.log(clientName, from, to, date)
     } )
 
+    function showToast(status) {
+        switch(status){
+            case 'success':
+                toast.success('Delivery Registered!', {
+                    position: toast.POSITION.BOTTOM_LEFT,
+                });
+                break;
+            case 'warning':
+                toast.warning('Check for empty fields.', {
+                    position: toast.POSITION.BOTTOM_LEFT,
+                });
+        }
+    }
+
     function handleFormSubmition(isFilled) {
         setIsLoading(true)
         if (isFilled) {
             setTimeout(() => {
                 //TODO: Check From and To Adress before sending data to database
-                alert('Delivery Registered')
+                showToast('success')
                 clearFormData()
                 setIsLoading(false)
             }, 1000);
         } else {
-            alert('Fields left empty')
+            showToast('warning')
             setIsLoading(false)
         }
     }

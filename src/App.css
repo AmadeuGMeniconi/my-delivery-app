@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
 
 * {
   margin: 0;
@@ -24,22 +25,26 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.055);
+  box-shadow: 0rem 0.5rem 0.5rem #0000000e;
 }
 .appHeader > span {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 1.5rem;
+ 
+}
+.appHeader > span > .icon {
+  margin-left: 1em;
+  margin-right: 1em;
 }
 .appHeader > span > h1 {
-  padding-left: 1em;
-  font-weight: 700;
-  font-size: 1.6em;
+  font-family: 'Roboto Condensed', sans-serif;;
+  font-weight: 300;
+  font-size: 2em;
   cursor: default;
 }
 .navBar {
-  min-width: 5rem;
+  width: 7rem;
   grid-row: 2 / -1;
   display: flex;
   flex-direction: column;

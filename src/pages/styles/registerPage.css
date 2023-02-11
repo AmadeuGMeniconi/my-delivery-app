@@ -51,6 +51,7 @@ form > label > .date {
     border: none;
     border-radius: 0.2em;
     background-color: #6bffc6;
+    font-weight: 700;
     color: white;
     box-shadow: 0.2em 0.2em 0.4em #0000001a;
     cursor: pointer;

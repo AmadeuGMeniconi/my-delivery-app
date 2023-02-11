@@ -20,10 +20,7 @@ const RegisterPage = (props) => {
 
     useEffect(() => {
         setIsFilled(checkIsDeliveryDataComplete());
-        console.log('isLoading? ', isLoading)
-        console.log('isFilled? ', isFilled)
-        console.log('-------------------------')
-    } )
+    }, [clientName, from, to, date] )
 
     function clearFormData() {
         setClientName('')
@@ -64,6 +61,10 @@ const RegisterPage = (props) => {
             props.setIsNavDisabled(true)
             try {
                 setTimeout(() => {
+                    //Temporary
+                    props.pushToDeliveryList({ 'clientName': clientName, 'from': from, 'to': to, 'date': date})
+                    //Temporary
+                    
                     //TODO: GoogleMaps validade From and To here, on input or on backend before sending data to database throgh this try catch
                     showToast('DELIVERY_REGISTERED')
                     clearFormData()

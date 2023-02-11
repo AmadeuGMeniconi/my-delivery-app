@@ -3,16 +3,17 @@ import './styles/tablePage.css'
 
 import { MapPinIcon } from '@heroicons/react/24/solid'
 
-const TablePage = () => {
+const TablePage = (props) => {
 
-    const [deliveryList, setDeliveryList] = useState([
-        {id: 1, clientName: 'alberto', from: 'Rua A', to: 'Rua B', date: '21-05-2023'},
-        {id: 2, clientName: 'maria', from: 'Rua C', to: 'Avenida A', date: '23-08-2023'},
-        {id: 3, clientName: 'joao', from: 'Avenida F', to: 'Rua B', date: '01-01-2023'}
-    ]);
+    const [list, setList] = useState(props.deliveryList)
+    console.log(list)
 
     return (
         <div className='tablePageContainer'>
+
+            {list.length === 0 ? 
+            <h1 className='message'>No Data</h1> 
+            : 
             <table>
                 <thead>
                     <tr>
@@ -25,20 +26,22 @@ const TablePage = () => {
                     </tr>
                 </thead>
                 <tbody >
-                    {deliveryList.map((delivery, index) => {
+                    {list.map((delivery, index) => {
                         return (
-                        <tr key={delivery.id} onClick={() => console.log('Idx: ' + index, ' | ', 'Id: ' + delivery.id)}>
-                            <td>{delivery.id}</td>
-                            <td>{delivery.clientName}</td>
-                            <td>{delivery.from}</td>
-                            <td>{delivery.to}</td>
-                            <td>{delivery.date}</td>
-                            <td className='trackDelivery'><MapPinIcon height={25} fill={'red'}/></td>
-                        </tr>
-                        );
+                            //TODO: Fix the <tr>key and <td>id fiels to match delivery object ID (set by database with auto increment)
+                            <tr key={index} onClick={() => console.log('Idx: ' + index, ' | ', 'Id: ' + delivery.id)}>
+                                <td>{index}</td>
+                                <td>{delivery.clientName}</td>
+                                <td>{delivery.from}</td>
+                                <td>{delivery.to}</td>
+                                <td>{delivery.date}</td>
+                                <td className='trackDelivery'><MapPinIcon height={25} fill={'red'}/></td>
+                            </tr>
+                            );
                     })}
                 </tbody>
-            </table>
+            </table>}
+
         </div>
     );
 }

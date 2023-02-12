@@ -3,16 +3,16 @@ import './styles/tablePage.css'
 
 import { MapPinIcon } from '@heroicons/react/24/solid'
 
-const TablePage = (props) => {
+const TablePage = ({deliveryList}) => {
 
-    const [list, setList] = useState(props.deliveryList)
+    const [list, setList] = useState(deliveryList)
     console.log(list)
 
     return (
         <div className='tablePageContainer'>
 
             {list.length === 0 ? 
-            <h1 className='message'>No Data</h1> 
+            <h1 className='message'>&lt;no data&gt;</h1> 
             : 
             <div className='scrollContainer'>
                 <table>

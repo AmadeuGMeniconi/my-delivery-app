@@ -25,6 +25,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  background-color: #6bffc6;
   box-shadow: 0rem 0.5rem 0.5rem #0000000e;
 }
 .appHeader > span {
@@ -39,9 +40,10 @@
 }
 .appHeader > span > h1 {
   font-family: 'Roboto Condensed', sans-serif;;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 2em;
   cursor: default;
+  color: white;
 }
 .navBar {
   width: 7rem;

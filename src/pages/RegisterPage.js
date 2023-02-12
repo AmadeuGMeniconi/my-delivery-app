@@ -8,7 +8,7 @@ import Throbber from '../components/Throbber';
 //Styles
 import './styles/registerPage.css'
 
-const RegisterPage = (props) => {
+const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
 
     const [clientName, setClientName] = useState('')
     const [from, setFrom] = useState('')
@@ -58,23 +58,23 @@ const RegisterPage = (props) => {
     function formSubmition(isFilled) {
         if (isFilled) {
             setIsLoading(true)
-            props.setIsNavDisabled(true)
+            setIsNavDisabled(true)
             try {
                 setTimeout(() => {
                     //Temporary
-                    props.pushToDeliveryList({ 'clientName': clientName, 'from': from, 'to': to, 'date': date})
+                    pushToDeliveryList({ 'clientName': clientName, 'from': from, 'to': to, 'date': date})
                     //Temporary
                     
                     //TODO: GoogleMaps validade From and To here, on input or on backend before sending data to database throgh this try catch
                     showToast('DELIVERY_REGISTERED')
-                    // clearFormData()
+                    clearFormData()
                     setIsLoading(false)
-                    props.setIsNavDisabled(false)
-                }, 0);
+                    setIsNavDisabled(false)
+                }, 1000);
             } catch (error) {
                 showToast('DELIVERY_REGISTER_FAILED')
                 setIsLoading(false)
-                props.setIsNavDisabled(false)
+                setIsNavDisabled(false)
             }
         } else {
             showToast('EMPTY_FIELDS')

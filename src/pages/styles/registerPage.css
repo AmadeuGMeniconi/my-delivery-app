@@ -14,9 +14,11 @@
     align-items: center;
     margin: 4em;
     min-width: 20em;
+    cursor: default;
 }
 .title > h1 {
     font-size: 5em;
+    
 }
 
 form {

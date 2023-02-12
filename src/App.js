@@ -46,11 +46,11 @@ function App() {
       <ToastContainer/>
       <div className="appContainer">
         <header className='appHeader'>
-          <span><CubeIcon className='icon' fill={'#6bffc6'} width={80}/><h1>DELIVERIO</h1></span>
+          <span><CubeIcon className='icon' fill={'white'} width={80}/><h1>DELIVERIO</h1></span>
         </header>
         <nav className='navBar'>
-          <PageButton onClick={() => goToPage('REGISTER')} disabled={isNavDisabled} icon={<ArchiveBoxArrowDownIcon stroke='white'/>} />
-          <PageButton onClick={() => goToPage('TABLE')} disabled={isNavDisabled} icon={<ClipboardDocumentListIcon stroke='white'/>}/>
+          <PageButton onClick={() => goToPage('REGISTER')} disabled={isNavDisabled} icon={<ArchiveBoxArrowDownIcon stroke='white'/>} title={'Register Page'}/>
+          <PageButton onClick={() => goToPage('TABLE')} disabled={isNavDisabled} icon={<ClipboardDocumentListIcon stroke='white'/>} title={'Delivery List Page'}/>
           {/* <PageButton onClick={() => goToPage('MAP')} isLoading={isLoading}/> */}
         </nav>
         <div className='pageContainer'>

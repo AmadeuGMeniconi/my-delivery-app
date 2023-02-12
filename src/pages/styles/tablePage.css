@@ -9,6 +9,7 @@
     color: #9b9b9b;
     position: fixed;
     top: 50%;
+    cursor: default;
 }
 .scrollContainer {
     margin-top: 5em;

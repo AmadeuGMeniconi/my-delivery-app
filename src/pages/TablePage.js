@@ -3,15 +3,12 @@ import './styles/tablePage.css'
 
 import { MapPinIcon } from '@heroicons/react/24/solid'
 
-const TablePage = ({deliveryList}) => {
-
-    const [list, setList] = useState(deliveryList)
-    console.log(list)
+const TablePage = ({deliveryList, goToPage}) => {
 
     return (
         <div className='tablePageContainer'>
 
-            {list.length === 0 ? 
+            {deliveryList.length === 0 ? 
             <h1 className='message'>&lt;no data&gt;</h1> 
             : 
             <div className='scrollContainer'>
@@ -27,16 +24,16 @@ const TablePage = ({deliveryList}) => {
                         </tr>
                     </thead>
                     <tbody >
-                        {list.map((delivery, index) => {
+                        {deliveryList.map((delivery, index) => {
                             return (
                                 //TODO: Fix the <tr>key and <td>id fiels to match delivery object ID (set by database with auto increment)
-                                <tr key={index} onClick={() => console.log('Idx: ' + index, ' | ', 'Id: ' + delivery.id)}>
+                                <tr key={index} >
                                     <td>{index}</td>
                                     <td>{delivery.clientName}</td>
                                     <td>{delivery.from}</td>
                                     <td>{delivery.to}</td>
                                     <td>{delivery.date}</td>
-                                    <td className='trackDelivery'><MapPinIcon height={25} fill={'red'}/></td>
+                                    <td className='trackDelivery' ><MapPinIcon height={25} fill={'red'} onClick={() => goToPage('MAP')} /></td>
                                 </tr>
                             );
                         })}

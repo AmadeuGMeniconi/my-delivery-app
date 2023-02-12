@@ -6,10 +6,11 @@
     align-items: center;
 }
 .message {
-    color: #9b9b9b;
+    color: #bdbdbd;
     position: fixed;
     top: 50%;
     cursor: default;
+    font-size: 1.5em;
 }
 .scrollContainer {
     margin-top: 5em;

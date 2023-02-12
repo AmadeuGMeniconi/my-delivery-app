@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 
+
+
+
 //App components
 import PageButton from './components/PageButton';
 
@@ -13,10 +16,13 @@ import TablePage from './pages/TablePage';
 import './App.css';
 
 import { ClipboardDocumentListIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
-import {CubeIcon} from '@heroicons/react/24/solid'
+import { CubeIcon } from '@heroicons/react/24/solid'
 
+  
 
 function App() {
+
+  
   
   const [isNavDisabled, setIsNavDisabled] = useState(false)
   const [currentPage, setCurrentPage] = useState(<RegisterPage setIsNavDisabled={setIsNavDisabled} pushToDeliveryList={pushToDeliveryList}/>)
@@ -32,15 +38,13 @@ function App() {
     switch(page) {
       case 'REGISTER': setCurrentPage(<RegisterPage setIsNavDisabled={setIsNavDisabled} pushToDeliveryList={pushToDeliveryList}/>)
       break;
-      case 'TABLE': setCurrentPage(<TablePage setIsNavDisabled={setIsNavDisabled} deliveryList={deliveryList}/>)
+      case 'TABLE': setCurrentPage(<TablePage setIsNavDisabled={setIsNavDisabled} deliveryList={deliveryList} goToPage={goToPage}/>)
       break;
       case 'MAP': setCurrentPage(<MapPage setIsNavDisabled={setIsNavDisabled}/>)
       break;
     }
   }
 
-
-  
   return (
     <>
       <ToastContainer/>

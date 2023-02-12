@@ -10,9 +10,15 @@
     position: fixed;
     top: 50%;
 }
-table {
+.scrollContainer {
     margin-top: 5em;
+    height: 70vh;
+    overflow-y: auto;
     width: 80%;
+    min-width: 50em;
+}
+table {
+    width: 100%;
     min-width: 600px;
 }
 th {
@@ -20,9 +26,6 @@ th {
     font-size: 1em;
     font-weight: 700;
     padding: 0.5em;
-}
-table, td {
-    padding: 0.2em;
 }
 td {
     background-color: #ebebeb;

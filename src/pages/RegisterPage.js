@@ -41,16 +41,16 @@ const RegisterPage = (props) => {
         switch(status){
             case 'DELIVERY_REGISTERED':
                 toast.success('Delivery Registered!', {
-                    position: toast.POSITION.BOTTOM_LEFT,
+                    position: toast.POSITION.BOTTOM_RIGHT,
                 });
                 break;
             case 'DELIVERY_REGISTER_FAILED':
                 toast.warning('Oops. Something happened... Delivery Registration Refused.', {
-                    position: toast.POSITION.BOTTOM_LEFT,
+                    position: toast.POSITION.BOTTOM_RIGHT,
                 });
             case 'EMPTY_FIELDS':
                 toast.warning('Check for empty fields.', {
-                    position: toast.POSITION.BOTTOM_LEFT,
+                    position: toast.POSITION.BOTTOM_RIGHT,
                 });
         }
     }
@@ -67,10 +67,10 @@ const RegisterPage = (props) => {
                     
                     //TODO: GoogleMaps validade From and To here, on input or on backend before sending data to database throgh this try catch
                     showToast('DELIVERY_REGISTERED')
-                    clearFormData()
+                    // clearFormData()
                     setIsLoading(false)
                     props.setIsNavDisabled(false)
-                }, 2000);
+                }, 0);
             } catch (error) {
                 showToast('DELIVERY_REGISTER_FAILED')
                 setIsLoading(false)

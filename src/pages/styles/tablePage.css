@@ -1,3 +1,43 @@
 .tablePageContainer{
-    
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.message {
+    color: #bdbdbd;
+    position: fixed;
+    top: 50%;
+    cursor: default;
+    font-size: 1.5em;
+}
+.scrollContainer {
+    margin-top: 5em;
+    height: 70vh;
+    overflow-y: auto;
+    width: 80%;
+    min-width: 50em;
+}
+table {
+    width: 100%;
+    min-width: 600px;
+}
+th {
+    background-color: #6bffc6;
+    font-size: 1em;
+    font-weight: 700;
+    padding: 0.5em;
+}
+td {
+    background-color: #ebebeb;
+    text-align: center;
+}
+td.trackDelivery {
+    width: 2em;
+    padding: 0.2em 0.4em 0 0.4em ;
+}
+td.trackDelivery:hover {
+    background-color: rgb(214, 214, 214);
+    cursor: pointer;
 }

@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+//App components
+import Throbber from '../components/Throbber';
+
+//Styles
 import './styles/registerPage.css'
 
-const RegisterPage = () => {
+const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
 
     const [clientName, setClientName] = useState('')
     const [from, setFrom] = useState('')
@@ -13,6 +17,10 @@ const RegisterPage = () => {
 
     const [isLoading, setIsLoading] = useState(false)
     const [isFilled, setIsFilled] = useState(false)
+
+    useEffect(() => {
+        setIsFilled(checkIsDeliveryDataComplete());
+    }, [clientName, from, to, date] )
 
     function clearFormData() {
         setClientName('')
@@ -27,39 +35,49 @@ const RegisterPage = () => {
         } else {
             return false
         }
-    }
-
-    useEffect(() => {
-        setIsFilled(checkIsDeliveryDataComplete());
-        console.log(clientName, from, to, date)
-    } )
+    }    
 
     function showToast(status) {
         switch(status){
-            case 'success':
+            case 'DELIVERY_REGISTERED':
                 toast.success('Delivery Registered!', {
-                    position: toast.POSITION.BOTTOM_LEFT,
+                    position: toast.POSITION.BOTTOM_RIGHT,
                 });
                 break;
-            case 'warning':
+            case 'DELIVERY_REGISTER_FAILED':
+                toast.warning('Oops. Something happened... Delivery Registration Refused.', {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                });
+            case 'EMPTY_FIELDS':
                 toast.warning('Check for empty fields.', {
-                    position: toast.POSITION.BOTTOM_LEFT,
+                    position: toast.POSITION.BOTTOM_RIGHT,
                 });
         }
     }
 
-    function handleFormSubmition(isFilled) {
-        setIsLoading(true)
+    function formSubmition(isFilled) {
         if (isFilled) {
-            setTimeout(() => {
-                //TODO: Check From and To Adress before sending data to database
-                showToast('success')
-                clearFormData()
+            setIsLoading(true)
+            setIsNavDisabled(true)
+            try {
+                setTimeout(() => {
+                    //Temporary
+                    pushToDeliveryList({ 'clientName': clientName, 'from': from, 'to': to, 'date': date})
+                    //Temporary
+                    
+                    //TODO: GoogleMaps validade From and To here, on input or on backend before sending data to database throgh this try catch
+                    showToast('DELIVERY_REGISTERED')
+                    clearFormData()
+                    setIsLoading(false)
+                    setIsNavDisabled(false)
+                }, 1000);
+            } catch (error) {
+                showToast('DELIVERY_REGISTER_FAILED')
                 setIsLoading(false)
-            }, 1000);
+                setIsNavDisabled(false)
+            }
         } else {
-            showToast('warning')
-            setIsLoading(false)
+            showToast('EMPTY_FIELDS')
         }
     }
 
@@ -67,7 +85,7 @@ const RegisterPage = () => {
         <div className='registerPageContainer'>
             <div className='title'>
                 <h1>Welcome</h1>
-                <h2>Fill the form bellow to register the delivery</h2>
+                <p>Fill the form bellow to register the delivery</p>
             </div>
             <form>
                 <label>
@@ -106,6 +124,7 @@ const RegisterPage = () => {
                 <label>
                     Date:
                     <input 
+                    className='date'
                         type='date' 
                         value={date} 
                         name='date' 
@@ -114,19 +133,16 @@ const RegisterPage = () => {
                         disabled={isLoading}
                     />
                 </label>
-
-                {
-                isLoading ? 
-                    <h1>Loading...</h1> 
-                    :
-                    <input 
-                        className='submitButton'
-                        type='submit' 
-                        value='Register'
-                        onClick={() => handleFormSubmition(isFilled)}  
-                        disabled={isLoading}
-                    />
-                }
+                
+                {isLoading && <Throbber/>}
+                    
+                <input 
+                    className='submitButton'
+                    type='submit' 
+                    value='Register'
+                    onClick={() => formSubmition(isFilled)}  
+                    disabled={isLoading}
+                />
             </form>
         </div>
     );

@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+//Google APIs
+import Autocomplete from "react-google-autocomplete";
+
 //App components
 import Throbber from '../components/Throbber';
 
@@ -30,7 +33,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
     }
 
     function checkIsDeliveryDataComplete () {
-        if (clientName.length && from.length && to.length && date.length !== 0) {
+        if (clientName && from && to && date !== '') {
             return true
         } else {
             return false
@@ -49,7 +52,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                     position: toast.POSITION.BOTTOM_RIGHT,
                 });
             case 'EMPTY_FIELDS':
-                toast.warning('Check for empty fields.', {
+                toast.warning('Check for empty or incorrect fields.', {
                     position: toast.POSITION.BOTTOM_RIGHT,
                 });
         }
@@ -70,7 +73,9 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                     clearFormData()
                     setIsLoading(false)
                     setIsNavDisabled(false)
+                    // window.location.reload(false)
                 }, 1000);
+                
             } catch (error) {
                 showToast('DELIVERY_REGISTER_FAILED')
                 setIsLoading(false)
@@ -96,12 +101,13 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                         name='clientName' 
                         required 
                         onChange={(e) => setClientName(e.target.value)}
-                        disabled={isLoading}
+                        // disabled={isLoading}
                     />
                 </label>
-                <label>
+                {/* <label>
                     From:
                     <input 
+                        // id='google-maps-autocomplete-from'
                         type='text' 
                         value={from} 
                         name='from' 
@@ -113,12 +119,43 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                 <label>
                     To:
                     <input 
+                        // id='google-maps-autocomplete-to'
                         type='text' 
                         value={to} 
                         name='to' 
                         required 
                         onChange={(e) => setTo(e.target.value)}
                         disabled={isLoading}
+                    />
+                </label> */}
+                <label>
+                    From:
+                    <Autocomplete
+                        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+                        onPlaceSelected={(place) => {
+                            setFrom(place.formatted_address)
+                        }}
+                        options={{
+                            types: [],
+                            componentRestrictions: { country: "br" },
+                        }}
+                        defaultValue={from}
+                        placeholder='Type in address'
+                    />
+                </label>
+                <label>
+                    To:
+                    <Autocomplete
+                        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+                        onPlaceSelected={(place) => {
+                            setTo(place.formatted_address);
+                        }}
+                        options={{
+                            types: [],
+                            componentRestrictions: { country: "br" },
+                        }}
+                        defaultValue={to}
+                        placeholder='Type in address'
                     />
                 </label>
                 <label>
@@ -130,7 +167,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                         name='date' 
                         required 
                         onChange={(e) => setDate(e.target.value)}
-                        disabled={isLoading}
+                        // disabled={isLoading}
                     />
                 </label>
                 
@@ -140,7 +177,10 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                     className='submitButton'
                     type='submit' 
                     value='Register'
-                    onClick={() => formSubmition(isFilled)}  
+                    onClick={(e) => {
+                        e.preventDefault()
+                        formSubmition(isFilled)
+                    }}
                     disabled={isLoading}
                 />
             </form>

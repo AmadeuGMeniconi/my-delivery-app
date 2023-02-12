@@ -17,14 +17,14 @@ const MapPage = () => {
   return (
     <div className='mapPageContainer'>
         <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={10}
-        >
-          { /* Child components, such as markers, info windows, etc. */ }
-          <></>
-        </GoogleMap>
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={10}
+          >
+            { /* Child components, such as markers, info windows, etc. */ }
+            <></>
+          </GoogleMap>
         </LoadScript>
     </div>
   );

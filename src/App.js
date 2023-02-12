@@ -50,7 +50,7 @@ function App() {
       <ToastContainer/>
       <div className="appContainer">
         <header className='appHeader'>
-          <span><CubeIcon className='icon' fill={'white'} width={80}/><h1>DELIVERIO</h1></span>
+          <span><CubeIcon className='icon' fill={'white'} width={80}/><h1>DELIVER.IO</h1></span>
         </header>
         <nav className='navBar'>
           <PageButton onClick={() => goToPage('REGISTER')} disabled={isNavDisabled} icon={<ArchiveBoxArrowDownIcon stroke='white'/>} title={'Register Page'}/>

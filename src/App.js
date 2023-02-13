@@ -22,8 +22,6 @@ import { CubeIcon } from '@heroicons/react/24/solid'
 
 function App() {
 
-  
-  
   const [isNavDisabled, setIsNavDisabled] = useState(false)
   const [currentPage, setCurrentPage] = useState(<RegisterPage setIsNavDisabled={setIsNavDisabled} pushToDeliveryList={pushToDeliveryList}/>)
   const [deliveryList, setDeliveryList] = useState([])
@@ -34,13 +32,13 @@ function App() {
     // console.log(deliveryList)
   }
   
-  function goToPage(page) {
+  function goToPage(page, mapData) {
     switch(page) {
       case 'REGISTER': setCurrentPage(<RegisterPage setIsNavDisabled={setIsNavDisabled} pushToDeliveryList={pushToDeliveryList}/>)
       break;
       case 'TABLE': setCurrentPage(<TablePage setIsNavDisabled={setIsNavDisabled} deliveryList={deliveryList} goToPage={goToPage}/>)
       break;
-      case 'MAP': setCurrentPage(<MapPage setIsNavDisabled={setIsNavDisabled}/>)
+      case 'MAP': setCurrentPage(<MapPage setIsNavDisabled={setIsNavDisabled} location={mapData}/>)
       break;
     }
   }

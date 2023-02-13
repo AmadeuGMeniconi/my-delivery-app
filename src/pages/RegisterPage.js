@@ -133,7 +133,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                     <Autocomplete
                         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                         onPlaceSelected={(place) => {
-                            setFrom(place.formatted_address)
+                            setFrom(place)
                         }}
                         options={{
                             types: [],
@@ -148,7 +148,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                     <Autocomplete
                         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                         onPlaceSelected={(place) => {
-                            setTo(place.formatted_address);
+                            setTo(place);
                         }}
                         options={{
                             types: [],

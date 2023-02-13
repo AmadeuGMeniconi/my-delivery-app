@@ -30,10 +30,10 @@ const TablePage = ({deliveryList, goToPage}) => {
                                 <tr key={index} >
                                     <td>{index}</td>
                                     <td>{delivery.clientName}</td>
-                                    <td>{delivery.from}</td>
-                                    <td>{delivery.to}</td>
+                                    <td>{delivery.from.formatted_address}</td>
+                                    <td>{delivery.to.formatted_address}</td>
                                     <td>{delivery.date}</td>
-                                    <td className='trackDelivery' ><MapPinIcon height={25} fill={'red'} onClick={() => goToPage('MAP')} /></td>
+                                    <td className='trackDelivery' ><MapPinIcon height={25} fill={'red'} onClick={() => goToPage('MAP', delivery.from.geometry.location)} /></td>
                                 </tr>
                             );
                         })}

@@ -51,10 +51,14 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                 toast.warning('Oops. Something happened... Delivery Registration Refused.', {
                     position: toast.POSITION.BOTTOM_RIGHT,
                 });
+                break;
             case 'EMPTY_FIELDS':
                 toast.warning('Check for empty or incorrect fields.', {
                     position: toast.POSITION.BOTTOM_RIGHT,
                 });
+                break;
+            default:
+                break;
         }
     }
 
@@ -66,6 +70,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                 setTimeout(() => {
                     //Temporary
                     pushToDeliveryList({ 'clientName': clientName, 'from': from, 'to': to, 'date': date})
+                    console.log({ 'clientName': clientName, 'from': from, 'to': to, 'date': date})
                     //Temporary
                     
                     //TODO: GoogleMaps validade From and To here, on input or on backend before sending data to database throgh this try catch
@@ -139,7 +144,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                             types: [],
                             componentRestrictions: { country: "br" },
                         }}
-                        defaultValue={from}
+                        defaultValue={''}
                         placeholder='Type in address'
                     />
                 </label>
@@ -154,7 +159,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                             types: [],
                             componentRestrictions: { country: "br" },
                         }}
-                        defaultValue={to}
+                        defaultValue={''}
                         placeholder='Type in address'
                     />
                 </label>

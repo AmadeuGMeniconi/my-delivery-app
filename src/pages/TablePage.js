@@ -33,7 +33,7 @@ const TablePage = ({deliveryList, goToPage}) => {
                                     <td>{delivery.from.formatted_address}</td>
                                     <td>{delivery.to.formatted_address}</td>
                                     <td>{delivery.date}</td>
-                                    <td className='trackDelivery' ><MapPinIcon height={25} fill={'red'} onClick={() => goToPage('MAP', delivery.from.geometry.location)} /></td>
+                                    <td className='trackDelivery' ><MapPinIcon height={25} fill={'red'} onClick={() => goToPage('MAP', delivery)} /></td>
                                 </tr>
                             );
                         })}

@@ -32,13 +32,13 @@ function App() {
     // console.log(deliveryList)
   }
   
-  function goToPage(page, mapData) {
+  function goToPage(page, delivery) {
     switch(page) {
       case 'REGISTER': setCurrentPage(<RegisterPage setIsNavDisabled={setIsNavDisabled} pushToDeliveryList={pushToDeliveryList}/>)
       break;
       case 'TABLE': setCurrentPage(<TablePage setIsNavDisabled={setIsNavDisabled} deliveryList={deliveryList} goToPage={goToPage}/>)
       break;
-      case 'MAP': setCurrentPage(<MapPage setIsNavDisabled={setIsNavDisabled} location={mapData}/>)
+      case 'MAP': setCurrentPage(<MapPage setIsNavDisabled={setIsNavDisabled} delivery={delivery}/>)
       break;
     }
   }

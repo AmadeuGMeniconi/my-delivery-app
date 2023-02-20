@@ -9,11 +9,16 @@ const containerStyle = {
 };
 
 
-const MapPage = ({location}) => {
+const MapPage = ({delivery}) => {
 
-  const center = {
-    lat: location.lat(),
-    lng: location.lng()
+  const from = {
+    lat: delivery.from.geometry.location.lat(),
+    lng: delivery.from.geometry.location.lng()
+  }
+
+  const to = {
+    lat: delivery.to.geometry.location.lat(),
+    lng: delivery.to.geometry.location.lng()
   }
 
   return (
@@ -21,11 +26,11 @@ const MapPage = ({location}) => {
       <GoogleMap
         // googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
         mapContainerStyle={containerStyle}
-        center={center}
-        zoom={17}
+        center={from}
+        zoom={13}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
+        
+        <Marker position={from} />
       </GoogleMap>
     </div>
   );

@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-
-
-
 //App components
 import PageButton from './components/PageButton';
 
@@ -18,7 +15,6 @@ import './App.css';
 import { ClipboardDocumentListIcon, ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
 import { CubeIcon } from '@heroicons/react/24/solid'
 
-  
 
 function App() {
 

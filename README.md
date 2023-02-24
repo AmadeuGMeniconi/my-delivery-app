@@ -1,5 +1,5 @@
-# My React App
+# My Delivery App - React App Exercise
 
-## In contruction...
+## Work in progress...
 
 To Run the app click on the link: https://amadeugmeniconi.github.io/my-delivery-app/

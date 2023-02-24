@@ -5,7 +5,7 @@ import './styles/mapPage.css'
 
 const containerStyle = {
   width: '100%',
-  height: '90vh'
+  height: '100%'
 };
 
 
@@ -16,7 +16,7 @@ const MapPage = ({delivery}) => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY
   })
 
-  // const [map, setMap] = useState(null)
+  const [map, setMap] = useState(null)
 
   const from = {
     lat: delivery.from.geometry.location.lat(),
@@ -39,8 +39,6 @@ const MapPage = ({delivery}) => {
     
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={from}
-        zoom={13}
         onLoad={onLoad}
       >
         <Marker position={from} />

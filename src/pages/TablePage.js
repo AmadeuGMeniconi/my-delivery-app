@@ -5,6 +5,8 @@ import { MapPinIcon } from '@heroicons/react/24/solid'
 
 const TablePage = ({deliveryList, goToPage}) => {
 
+
+    
     return (
         <div className='tablePageContainer'>
 
@@ -26,7 +28,6 @@ const TablePage = ({deliveryList, goToPage}) => {
                     <tbody >
                         {deliveryList.map((delivery, index) => {
                             return (
-                                //TODO: Fix the <tr>key and <td>id fiels to match delivery object ID (set by database with auto increment)
                                 <tr key={index} >
                                     <td>{index}</td>
                                     <td>{delivery.clientName}</td>

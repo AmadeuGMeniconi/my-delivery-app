@@ -3,18 +3,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-self: center;
     justify-content: center;
     position: absolute;
     width: 13.5em;
-    height: 3.5em;
+    height: 5em;
     padding: 0.2em;
-    margin-bottom: 1.7em;
-    margin-left: 0.6em;
+    margin-bottom: 1.5em;
     bottom: 0em;
-    
+    right: 3.8em;
     z-index: 50;
-    border-radius: 0.5em;
+    border-radius: 0.15em;
 }
 .travelInfo {
     height: 100%;
@@ -22,7 +20,11 @@
     font-size: 0.8em;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+}
+li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 strong {
     font-weight: 900;

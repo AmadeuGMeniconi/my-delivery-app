@@ -63,6 +63,12 @@ const MapPage = ({delivery}) => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         onLoad={onLoad}
+        options={{
+          streetViewControl:false,
+          fullscreenControl:false,
+          mapTypeControl:false,
+        }}
+        
       >
 
         {directions && <DirectionsRenderer 

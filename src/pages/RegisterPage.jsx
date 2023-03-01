@@ -68,20 +68,14 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
             setIsNavDisabled(true)
             try {
                 setTimeout(() => {
-                //Temporary 
+                //Temporary...
                     pushToDeliveryList({
                         'clientName': clientName, 
                         'origin': origin, 
                         'destination': destination, 
                         'date': date
                     });
-                    // console.log({ 
-                    //     'clientName': clientName, 
-                    //     'origin': origin, 
-                    //     'destination': destination, 
-                    //     'date': date
-                    // });
-                //Temporary
+                //...Temporary
                     showToast('DELIVERY_REGISTERED');
                     clearFormData();
                     setIsLoading(false);
@@ -103,75 +97,75 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                 <h1>Welcome</h1>
                 <p>Fill the form bellow to register the delivery</p>
             </div>
-            <form>
-                <label>
-                    Client name:
+            {isLoading ? 
+                <Throbber/> 
+                :
+                <form>
+                    <label>
+                        Client name:
+                        <input 
+                            type='text' 
+                            value={clientName} 
+                            name='clientName' 
+                            required 
+                            onChange={(e) => setClientName(e.target.value)}
+                            disabled={isLoading}
+                        />
+                    </label>
+                    <label>
+                        Origin:
+                        <Autocomplete
+                            apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+                            onPlaceSelected={(place) => {
+                                setOrigin(place)
+                            }}
+                            options={{
+                                types: [],
+                                componentRestrictions: { country: "br" },
+                            }}
+                            defaultValue={''}
+                            placeholder='Type in address'
+                        />
+                    </label>
+                    <label>
+                        Destination:
+                        <Autocomplete
+                            apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+                            onPlaceSelected={(place) => {
+                                setDestination(place);
+                            }}
+                            options={{
+                                types: [],
+                                componentRestrictions: { country: "br" },
+                            }}
+                            defaultValue={''}
+                            placeholder='Type in address'
+                        />
+                    </label>
+                    <label>
+                        Date:
+                        <input 
+                            className='date'
+                            type='date' 
+                            value={date} 
+                            name='date' 
+                            required 
+                            onChange={(e) => setDate(e.target.value)}
+                            disabled={isLoading}
+                        />
+                    </label>
                     <input 
-                        type='text' 
-                        value={clientName} 
-                        name='clientName' 
-                        required 
-                        onChange={(e) => setClientName(e.target.value)}
+                        className='submitButton'
+                        type='submit' 
+                        value='Register'
+                        onClick={(e) => {
+                            e.preventDefault()
+                            formSubmition(isFilled)
+                        }}
                         disabled={isLoading}
                     />
-                </label>
-                <label>
-                    Origin:
-                    <Autocomplete
-                        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
-                        onPlaceSelected={(place) => {
-                            setOrigin(place)
-                        }}
-                        options={{
-                            types: [],
-                            componentRestrictions: { country: "br" },
-                        }}
-                        defaultValue={''}
-                        placeholder='Type in address'
-                    />
-                </label>
-                <label>
-                    Destination:
-                    <Autocomplete
-                        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
-                        onPlaceSelected={(place) => {
-                            setDestination(place);
-                        }}
-                        options={{
-                            types: [],
-                            componentRestrictions: { country: "br" },
-                        }}
-                        defaultValue={''}
-                        placeholder='Type in address'
-                    />
-                </label>
-                <label>
-                    Date:
-                    <input 
-                    className='date'
-                        type='date' 
-                        value={date} 
-                        name='date' 
-                        required 
-                        onChange={(e) => setDate(e.target.value)}
-                        disabled={isLoading}
-                    />
-                </label>
-                
-                {isLoading && <Throbber/>}
-                    
-                <input 
-                    className='submitButton'
-                    type='submit' 
-                    value='Register'
-                    onClick={(e) => {
-                        e.preventDefault()
-                        formSubmition(isFilled)
-                    }}
-                    disabled={isLoading}
-                    
-                />
-            </form>
+                </form>
+            }
         </div>
     );
 };

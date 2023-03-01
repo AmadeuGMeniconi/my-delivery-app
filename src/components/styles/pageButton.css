@@ -5,7 +5,7 @@
     height: 4.5em;
     border-radius: 50%;
     border: none;
-    box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.103);
+    box-shadow: 0.2em 0.2em 0.4em #0000000e;
     background-color: #6bffc6;
     cursor: pointer;
 }

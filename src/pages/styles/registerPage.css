@@ -53,7 +53,7 @@ form > label > input, Autocomplete {
     background-color: #6bffc6;
     font-weight: 700;
     color: white;
-    box-shadow: 0.2em 0.2em 0.4em #0000001a;
+    box-shadow: 0.2em 0.2em 0.4em #0000000e;
     cursor: pointer;
 }
 .submitButton:hover {

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './styles/tablePage.css'
 
 import { MapPinIcon } from '@heroicons/react/24/solid'

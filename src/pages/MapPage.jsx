@@ -68,7 +68,6 @@ const MapPage = ({delivery}) => {
           fullscreenControl:false,
           mapTypeControl:false,
         }}
-        
       >
 
         {directions && <DirectionsRenderer 
@@ -83,7 +82,6 @@ const MapPage = ({delivery}) => {
           }} 
         />}
         
-
         <Marker position={origin} />
         <Marker position={destination} />
       </GoogleMap>

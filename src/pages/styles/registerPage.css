@@ -18,7 +18,6 @@
 }
 .title > h1 {
     font-size: 5em;
-    
 }
 
 form {
@@ -35,7 +34,7 @@ form > label {
     flex: 1;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     margin: 0.2em;
 }
 form > label > input, Autocomplete {
@@ -44,12 +43,9 @@ form > label > input, Autocomplete {
     padding: 0.2em;
     margin-bottom: 0.4em;
 }
-/* form > label > .date {
-    width: 10.5em;
-    height: 3.5em;
-} */
 
 .submitButton {
+    align-items: flex-start;
     margin-top: 5em;
     padding: 1em 3.3em;
     border: none;

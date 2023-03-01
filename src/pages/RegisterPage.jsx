@@ -101,7 +101,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
         <div className='registerPageContainer'>
             <div className='title'>
                 <h1>Welcome</h1>
-                <p>Fill the form bellow destination register the delivery</p>
+                <p>Fill the form bellow to register the delivery</p>
             </div>
             <form>
                 <label>
@@ -112,35 +112,11 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                         name='clientName' 
                         required 
                         onChange={(e) => setClientName(e.target.value)}
-                        // disabled={isLoading}
-                    />
-                </label>
-                {/* <label>
-                    origin:
-                    <input 
-                        // id='google-maps-autocomplete-origin'
-                        type='text' 
-                        value={origin} 
-                        name='origin' 
-                        required 
-                        onChange={(e) => setOrigin(e.target.value)}
                         disabled={isLoading}
                     />
                 </label>
                 <label>
-                    destination:
-                    <input 
-                        // id='google-maps-autocomplete-destination'
-                        type='text' 
-                        value={destination} 
-                        name='destination' 
-                        required 
-                        onChange={(e) => setDestination(e.target.value)}
-                        disabled={isLoading}
-                    />
-                </label> */}
-                <label>
-                    origin:
+                    Origin:
                     <Autocomplete
                         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                         onPlaceSelected={(place) => {
@@ -155,7 +131,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                     />
                 </label>
                 <label>
-                    destination:
+                    Destination:
                     <Autocomplete
                         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                         onPlaceSelected={(place) => {
@@ -178,7 +154,7 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                         name='date' 
                         required 
                         onChange={(e) => setDate(e.target.value)}
-                        // disabled={isLoading}
+                        disabled={isLoading}
                     />
                 </label>
                 

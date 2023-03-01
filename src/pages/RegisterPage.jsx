@@ -9,36 +9,36 @@ import Autocomplete from "react-google-autocomplete";
 import Throbber from '../components/Throbber';
 
 //Styles
-import './styles/registerPage.css'
+import './styles/registerPage.css';
 
 const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
 
-    const [clientName, setClientName] = useState('')
-    const [from, setFrom] = useState('')
-    const [to, setTo] = useState('')
-    const [date, setDate] = useState('')
+    const [clientName, setClientName] = useState('');
+    const [origin, setOrigin] = useState('');
+    const [destination, setDestination] = useState('');
+    const [date, setDate] = useState('');
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [isFilled, setIsFilled] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const [isFilled, setIsFilled] = useState(false);
 
     useEffect(() => {
         setIsFilled(checkIsDeliveryDataComplete());
-    }, [clientName, from, to, date] )
+    }, [clientName, origin, destination, date] );
 
     function clearFormData() {
-        setClientName('')
-        setDate('')
-        setFrom('')
-        setTo('')
-    }
+        setClientName('');
+        setDate('');
+        setOrigin('');
+        setDestination('');
+    };
 
     function checkIsDeliveryDataComplete () {
-        if (clientName && from && to && date !== '') {
-            return true
+        if (clientName && origin && destination && date !== '') {
+            return true;
         } else {
-            return false
-        }
-    }    
+            return false;
+        };
+    };
 
     function showToast(status) {
         switch(status){
@@ -59,8 +59,8 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                 break;
             default:
                 break;
-        }
-    }
+        };
+    };
 
     function formSubmition(isFilled) {
         if (isFilled) {
@@ -68,34 +68,40 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
             setIsNavDisabled(true)
             try {
                 setTimeout(() => {
-                    //Temporary
-                    pushToDeliveryList({ 'clientName': clientName, 'from': from, 'to': to, 'date': date})
-                    console.log({ 'clientName': clientName, 'from': from, 'to': to, 'date': date})
-                    //Temporary
-                    
-                    //TODO: GoogleMaps validade From and To here, on input or on backend before sending data to database throgh this try catch
-                    showToast('DELIVERY_REGISTERED')
-                    clearFormData()
-                    setIsLoading(false)
-                    setIsNavDisabled(false)
-                    // window.location.reload(false)
+                //Temporary 
+                    pushToDeliveryList({
+                        'clientName': clientName, 
+                        'origin': origin, 
+                        'destination': destination, 
+                        'date': date
+                    });
+                    // console.log({ 
+                    //     'clientName': clientName, 
+                    //     'origin': origin, 
+                    //     'destination': destination, 
+                    //     'date': date
+                    // });
+                //Temporary
+                    showToast('DELIVERY_REGISTERED');
+                    clearFormData();
+                    setIsLoading(false);
+                    setIsNavDisabled(false);
                 }, 1000);
-                
             } catch (error) {
-                showToast('DELIVERY_REGISTER_FAILED')
-                setIsLoading(false)
-                setIsNavDisabled(false)
+                showToast('DELIVERY_REGISTER_FAILED');
+                setIsLoading(false);
+                setIsNavDisabled(false);
             }
         } else {
-            showToast('EMPTY_FIELDS')
-        }
-    }
+            showToast('EMPTY_FIELDS');
+        };
+    };
 
     return (
         <div className='registerPageContainer'>
             <div className='title'>
                 <h1>Welcome</h1>
-                <p>Fill the form bellow to register the delivery</p>
+                <p>Fill the form bellow destination register the delivery</p>
             </div>
             <form>
                 <label>
@@ -110,35 +116,35 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                     />
                 </label>
                 {/* <label>
-                    From:
+                    origin:
                     <input 
-                        // id='google-maps-autocomplete-from'
+                        // id='google-maps-autocomplete-origin'
                         type='text' 
-                        value={from} 
-                        name='from' 
+                        value={origin} 
+                        name='origin' 
                         required 
-                        onChange={(e) => setFrom(e.target.value)}
+                        onChange={(e) => setOrigin(e.target.value)}
                         disabled={isLoading}
                     />
                 </label>
                 <label>
-                    To:
+                    destination:
                     <input 
-                        // id='google-maps-autocomplete-to'
+                        // id='google-maps-autocomplete-destination'
                         type='text' 
-                        value={to} 
-                        name='to' 
+                        value={destination} 
+                        name='destination' 
                         required 
-                        onChange={(e) => setTo(e.target.value)}
+                        onChange={(e) => setDestination(e.target.value)}
                         disabled={isLoading}
                     />
                 </label> */}
                 <label>
-                    From:
+                    origin:
                     <Autocomplete
                         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                         onPlaceSelected={(place) => {
-                            setFrom(place)
+                            setOrigin(place)
                         }}
                         options={{
                             types: [],
@@ -149,11 +155,11 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                     />
                 </label>
                 <label>
-                    To:
+                    destination:
                     <Autocomplete
                         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
                         onPlaceSelected={(place) => {
-                            setTo(place);
+                            setDestination(place);
                         }}
                         options={{
                             types: [],
@@ -187,10 +193,11 @@ const RegisterPage = ({setIsNavDisabled, pushToDeliveryList}) => {
                         formSubmition(isFilled)
                     }}
                     disabled={isLoading}
+                    
                 />
             </form>
         </div>
     );
-}
+};
   
 export default RegisterPage;

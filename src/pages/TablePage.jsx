@@ -9,7 +9,6 @@ const TablePage = ({deliveryList, goToPage}) => {
     
     return (
         <div className='tablePageContainer'>
-
             {deliveryList.length === 0 ? 
             <h1 className='message'>&lt;no data&gt;</h1> 
             : 
@@ -31,10 +30,16 @@ const TablePage = ({deliveryList, goToPage}) => {
                                 <tr key={index} >
                                     <td>{index}</td>
                                     <td>{delivery.clientName}</td>
-                                    <td>{delivery.from.formatted_address}</td>
-                                    <td>{delivery.to.formatted_address}</td>
+                                    <td>{delivery.origin.formatted_address}</td>
+                                    <td>{delivery.destination.formatted_address}</td>
                                     <td>{delivery.date}</td>
-                                    <td className='trackDelivery' ><MapPinIcon height={25} fill={'red'} onClick={() => goToPage('MAP', delivery)} /></td>
+                                    <td className='trackDelivery'>
+                                        <MapPinIcon 
+                                            height={25} 
+                                            fill={'red'} 
+                                            onClick={() => goToPage('MAP', delivery)} 
+                                        />
+                                    </td>
                                 </tr>
                             );
                         })}

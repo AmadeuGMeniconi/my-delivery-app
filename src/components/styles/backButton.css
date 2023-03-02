@@ -1,0 +1,21 @@
+.backButton {
+    position: absolute;
+    bottom: 2.2em;
+    left: 1em;
+    padding: 1.3em;
+    width: 4.5em;
+    height: 4.5em;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0.4em 0.4em 0.4em #0000000e;
+    background-color: #ffffff;
+    cursor: pointer;
+    z-index: 20;
+}
+.backButton:hover {
+    background-color: #ebebeb;
+    
+}
+.backButton:active {
+    background-color: #dbdbdb;
+}

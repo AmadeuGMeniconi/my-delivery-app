@@ -19,6 +19,8 @@ import { CubeIcon } from '@heroicons/react/24/solid';
 function App() {
 
   const [isNavDisabled, setIsNavDisabled] = useState(false);
+  const [isRegisterNavDisabled, setIsRegisterNavDisabled] = useState(true);
+  const [isTableNavDisabled, setIsTableNavDisabled] = useState(false)
   const [deliveryList, setDeliveryList] = useState([]);
   const [currentPage, setCurrentPage] = useState(
     <RegisterPage 
@@ -42,6 +44,8 @@ function App() {
             pushToDeliveryList={pushToDeliveryList}
           />
         );
+        setIsRegisterNavDisabled(!isRegisterNavDisabled);
+        setIsTableNavDisabled(!isTableNavDisabled);
         break;
       case 'TABLE': 
         setCurrentPage(
@@ -51,12 +55,15 @@ function App() {
             goToPage={goToPage}
           />
         );
+        setIsTableNavDisabled(!isTableNavDisabled);
+        setIsRegisterNavDisabled(!isRegisterNavDisabled);
         break;
       case 'MAP':  
         setCurrentPage(
           <MapPage 
             setIsNavDisabled={setIsNavDisabled} 
             delivery={delivery}
+            goToPage={goToPage}
           />
         );
         break;
@@ -80,13 +87,13 @@ function App() {
         <nav className='navBar'>
           <PageButton 
             onClick={() => goToPage('REGISTER')} 
-            disabled={isNavDisabled} 
+            disabled={isNavDisabled || isRegisterNavDisabled} 
             icon={<ArchiveBoxArrowDownIcon stroke='white'/>} 
             title={'Register Page'}
           />
           <PageButton 
             onClick={() => goToPage('TABLE')} 
-            disabled={isNavDisabled} 
+            disabled={isNavDisabled || isTableNavDisabled} 
             icon={<ClipboardDocumentListIcon stroke='white'/>} 
             title={'Delivery List Page'}
           />

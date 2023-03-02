@@ -8,7 +8,9 @@ import {
 } from '@react-google-maps/api';
 
 import './styles/mapPage.css';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import Distance from '../components/Distance';
+import BackNavButton from '../components/BackNavButton';
 
 const containerStyle = {
   width: '100%',
@@ -16,7 +18,7 @@ const containerStyle = {
 };
 
 
-const MapPage = ({delivery}) => {
+const MapPage = ({delivery, goToPage}) => {
 
   const [directions, setDirections] = useState();
 
@@ -60,6 +62,10 @@ const MapPage = ({delivery}) => {
   return isLoaded ? (
     <div className='mapPageContainer'>
       {directions && <Distance leg={directions.routes[0].legs[0]} />}
+      <BackNavButton 
+        icon={<ArrowLeftIcon stroke='#777' strokeWidth={2}/>} 
+        onClick={() => goToPage('TABLE')}
+      />
       <GoogleMap
         mapContainerStyle={containerStyle}
         onLoad={onLoad}
